@@ -27,3 +27,10 @@ We welcome contributions from the community to help improve this project. To con
 
 ## Contact
 For questions, feedback, or support, please contact me by raising an issue
+
+## Version-1.0
+Will support creation of private account with fixed fund.
+Will support viewing odds pre-match 1 day prior to the match taking place.
+Will support picking which team to win.
+Will support funds changed based on outcome after the match is concluded.
+
