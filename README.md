@@ -1,7 +1,7 @@
-# safefootballbets: A Safe Football Betting Environment
+# safesportsbets: A Safe Sports Betting Environment
 
 ## Overview
-Football Betting Hub is an online platform that allows users to engage in simulated football (soccer) betting using virtual currency. The platform provides a safe and educational environment for users to experience the thrill of betting without the risks associated with real money gambling. Our mission is to promote responsible gambling habits and raise awareness about the potential dangers of sports betting addiction.
+safesportsbets is an online platform that allows users to engage in simulated sports betting using virtual currency. The platform provides a safe and educational environment for users to experience the thrill of betting without the risks associated with real money gambling. Our mission is to promote responsible gambling habits and raise awareness about the potential dangers of sports betting addiction.
 
 ## Features
 - **User Registration**: Create an account to access the platform and start betting.
@@ -13,8 +13,6 @@ Football Betting Hub is an online platform that allows users to engage in simula
 - **Community Interaction**: Engage with fellow users, share betting tips, and discuss football matches.
 - **Monitoring and Moderation**: We maintain a safe and welcoming environment through monitoring and moderation systems.
 
-
-
 ## Contributing
 We welcome contributions from the community to help improve this project. To contribute:
 - Fork the repository and create a new branch for your feature or bug fix.
@@ -22,8 +20,6 @@ We welcome contributions from the community to help improve this project. To con
 - Ensure that your code follows the project's coding standards and conventions.
 - Test your changes thoroughly to ensure they function as intended.
 - Collaborate with other contributors and maintainers to review and refine your contributions.
-
-
 
 ## Contact
 For questions, feedback, or support, please contact me by raising an issue
@@ -33,4 +29,3 @@ Will support creation of private account with fixed fund.
 Will support viewing odds pre-match 1 day prior to the match taking place.
 Will support picking which team to win.
 Will support funds changed based on outcome after the match is concluded.
-
