@@ -7,13 +7,13 @@ americanfootball_nfl_super_bowl_winner American Football NFL Super Bowl Winner S
 americanfootball_ufl American Football UFL United Football League True False
 aussierules_afl Aussie Rules AFL Aussie Football True False
 baseball_kbo Baseball KBO KBO League True False
-baseball_milb Baseball MiLB Minor League Baseball True False
+baseball_milb Baseball MiLB Minor League Baseball False False
 baseball_mlb Baseball MLB Major League Baseball True False
 baseball_mlb_preseason Baseball MLB Preseason Major League Baseball False False
 baseball_mlb_world_series_winner Baseball MLB World Series Winner World Series Winner 2024 True True
 baseball_ncaa Baseball NCAA Baseball US College Baseball True False
-baseball_npb Baseball NPB Nippon Professional Baseball False False
-basketball_euroleague Basketball Basketball Euroleague Basketball Euroleague False False
+baseball_npb Baseball NPB Nippon Professional Baseball True False
+basketball_euroleague Basketball Basketball Euroleague Basketball Euroleague True False
 basketball_nba Basketball NBA US Basketball True False
 basketball_nba_championship_winner Basketball NBA Championship Winner Championship Winner 2023/2024 True True
 basketball_nba_preseason Basketball NBA Preseason US Basketball False False
@@ -45,15 +45,15 @@ politics_us_presidential_election_winner Politics US Presidential Elections Winn
 rugbyleague_nrl Rugby League NRL Aussie Rugby League True False
 rugbyunion_world_cup Rugby Union World Cup World Cup 2023 False False
 soccer_africa_cup_of_nations Soccer Africa Cup of Nations Africa Cup of Nations False False
-soccer_argentina_primera_division Soccer Primera Divisiï¿½n - Argentina Argentine Primera Divisiï¿½n True False
+soccer_argentina_primera_division Soccer Primera División - Argentina Argentine Primera División True False
 soccer_australia_aleague Soccer A-League Aussie Soccer True False
 soccer_austria_bundesliga Soccer Austrian Football Bundesliga Austrian Soccer True False
 soccer_belgium_first_div Soccer Belgium First Div Belgian First Division A True False
-soccer_brazil_campeonato Soccer Brazil Sï¿½rie A Brasileirï¿½o Sï¿½rie A True False
-soccer_brazil_serie_b Soccer Brazil Sï¿½rie B Campeonato Brasileiro Sï¿½rie B True False
-soccer_chile_campeonato Soccer Primera Divisiï¿½n - Chile Campeonato Chileno True False
+soccer_brazil_campeonato Soccer Brazil Série A Brasileirão Série A True False
+soccer_brazil_serie_b Soccer Brazil Série B Campeonato Brasileiro Série B True False
+soccer_chile_campeonato Soccer Primera División - Chile Campeonato Chileno True False
 soccer_china_superleague Soccer Super League - China Chinese Soccer True False
-soccer_conmebol_copa_america Soccer Copa Amï¿½rica CONMEBOL Copa Amï¿½rica True False
+soccer_conmebol_copa_america Soccer Copa América CONMEBOL Copa América True False
 soccer_conmebol_copa_libertadores Soccer Copa Libertadores CONMEBOL Copa Libertadores True False
 soccer_denmark_superliga Soccer Denmark Superliga Danish Soccer True False
 soccer_efl_champ Soccer Championship EFL Championship True False
