@@ -1,32 +1,19 @@
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-#nav-bar {
-    margin-top: 20px;
-}
-
+/* CSS styles */
 table {
+    font-family: Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 20px;
 }
 
-caption {
-    font-weight: bold;
-    font-size: 1.2em;
-    padding-bottom: 10px;
-}
-
-td {
-    border: 1px solid #ddd;
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
     padding: 8px;
 }
 
-td:hover {
+tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
 
 
