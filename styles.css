@@ -143,3 +143,33 @@ h1 {
 .league-list li:hover {
     background-color: #ddd;
 }
+
+#nav-bar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-bar li {
+    display: inline-block;
+    position: relative;
+}
+
+.league-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.league-list li {
+    padding: 5px 0;
+}
+
+#nav-bar li:hover .league-list {
+    display: block;
+}
+
