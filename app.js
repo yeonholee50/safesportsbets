@@ -31,6 +31,14 @@ fetch('backend/receive/league_keys.txt')
             // Add dropdown for leagues
             const dropdownCell = row.insertCell();
             const dropdown = document.createElement('select');
+
+            // Add default option
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select One';
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            dropdown.appendChild(defaultOption);
+
             leagues.forEach(league => {
                 const option = document.createElement('option');
                 option.textContent = league.display;
@@ -41,7 +49,9 @@ fetch('backend/receive/league_keys.txt')
             // Event listener for dropdown change
             dropdown.addEventListener('change', function() {
                 const selectedLeague = this.value;
-                window.location.href = `https://yeonholee50.github.io/safesportsbets/${selectedLeague}.html`;
+                if (selectedLeague !== 'Select One') {
+                    window.location.href = `https://yeonholee50.github.io/safesportsbets/${selectedLeague}.html`;
+                }
             });
 
             dropdownCell.appendChild(dropdown);
