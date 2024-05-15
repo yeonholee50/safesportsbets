@@ -3,6 +3,7 @@ import os
 import sys
 """
 This is a one time use function the key, group, title, description, active, and has_outrights into a log
+returns a list of odds for each sport
 """
 def main():
     
