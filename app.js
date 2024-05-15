@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 leaguesBySport[sport] = [leagueKey];
             }
         });
+        console.log(leaguesBySport);
         return leaguesBySport;
     }
 
