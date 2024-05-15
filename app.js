@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fetch league data from the backend
+    
     fetch('backend/receive/league_keys.txt')
         .then(response => response.text())
         .then(data => {
@@ -19,56 +19,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 leaguesBySport[sport] = [leagueKey];
             }
         });
-        
+        console.log(leaguesBySport);
         return leaguesBySport;
     }
 
     function displayNavigation(leaguesBySport) {
         const navBar = document.getElementById('nav-bar');
         for (const sport in leaguesBySport) {
-            const sportItem = document.createElement('li');
-            sportItem.textContent = sport;
+            const sportLink = document.createElement('div');
+            sportLink.textContent = sport;
+            sportLink.classList.add('sport-link');
     
             const leagueList = document.createElement('ul');
             leagueList.classList.add('league-list');
-    
             leaguesBySport[sport].forEach(league => {
                 const leagueItem = document.createElement('li');
                 leagueItem.textContent = league;
                 leagueList.appendChild(leagueItem);
             });
     
-            sportItem.appendChild(leagueList);
-            navBar.appendChild(sportItem);
+            sportLink.appendChild(leagueList);
     
-            // Show/hide league list when hovering over sportItem
-            sportItem.addEventListener('mouseenter', () => {
-                leagueList.style.display = 'block';
-            });
-    
-            sportItem.addEventListener('mouseleave', () => {
-                leagueList.style.display = 'none';
-            });
+            navBar.appendChild(sportLink);
         }
     }
     
+
     
-
-    function displayLeagues(leagues) {
-        const app = document.getElementById('app');
-        app.innerHTML = ''; // Clear previous content
-
-        const leagueList = document.createElement('ul');
-        leagueList.classList.add('league-list');
-
-        leagues.forEach(league => {
-            const leagueItem = document.createElement('li');
-            leagueItem.textContent = league;
-            leagueList.appendChild(leagueItem);
-        });
-
-        app.appendChild(leagueList);
-    
-    }
 });
 
