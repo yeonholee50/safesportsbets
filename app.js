@@ -26,15 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayNavigation(leaguesBySport) {
         const navBar = document.getElementById('nav-bar');
         for (const sport in leaguesBySport) {
-            const sportLink = document.createElement('a');
+            const sportLink = document.createElement('div');
             sportLink.textContent = sport;
-            sportLink.href = '#';
-            sportLink.addEventListener('mouseover', () => {
-                displayLeagues(leaguesBySport[sport]);
+            sportLink.classList.add('sport-link');
+    
+            const leagueList = document.createElement('ul');
+            leagueList.classList.add('league-list');
+            leaguesBySport[sport].forEach(league => {
+                const leagueItem = document.createElement('li');
+                leagueItem.textContent = league;
+                leagueList.appendChild(leagueItem);
             });
+    
+            sportLink.appendChild(leagueList);
+    
             navBar.appendChild(sportLink);
         }
     }
+    
 
     function displayLeagues(leagues) {
         const app = document.getElementById('app');
@@ -50,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         app.appendChild(leagueList);
+    
     }
 });
 
