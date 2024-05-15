@@ -41,7 +41,7 @@ fetch('backend/receive/league_keys.txt')
             // Event listener for dropdown change
             dropdown.addEventListener('change', function() {
                 const selectedLeague = this.value;
-                window.location.href = `https://yeonholee50.github/safesportsbets/${selectedLeague}.io`;
+                window.location.href = `https://yeonholee50.github.io/safesportsbets/${selectedLeague}.html`;
             });
 
             dropdownCell.appendChild(dropdown);
