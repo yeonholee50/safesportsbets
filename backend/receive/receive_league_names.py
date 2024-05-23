@@ -26,6 +26,7 @@ def main():
     client = get_database()
     
     db = client.sports
+    db.league_names.drop()
     results = []
     for league in leagues:
         result = db.league_names.insert_many([league])
@@ -34,8 +35,6 @@ def main():
     return results
     
 
-
-    
 
 
 if __name__ == "__main__":

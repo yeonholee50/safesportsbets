@@ -1,60 +1,58 @@
 import requests
 import os
 import sys
-"""
-This is a one time use function the key, group, title, description, active, and has_outrights into a log
+from pymongo import MongoClient
 
 """
+This is a once per day operation
+"""
+def get_database():
+    connection_string = "mongodb+srv://yeonholee50:YeonHo1010@cluster0.j2eo96c.mongodb.net/"
+    client = MongoClient(connection_string)
+    return client
 def main():
-    
-    odds_by_key = {}
-    with open("league_keys.txt", "r") as league_txt_file:
-        lines = league_txt_file.readlines()
-        
-        for line in lines:
-            line = line.split()
-            key, group, title, active, has_outright = line[0], line[1], line[2], line[-2], line[-1]
-            if active == 'True':
-                url = f"https://odds.p.rapidapi.com/v4/sports/{key}/odds"
-
-                querystring = {"regions":"us","oddsFormat":"decimal","markets":"h2h,spreads","dateFormat":"iso"}
-
-                headers = {
-                    "X-RapidAPI-Key": "cf36c28ab2msh3578c681fa5368cp168942jsnfe34a3f1abc4",
-                    "X-RapidAPI-Host": "odds.p.rapidapi.com"
-                }
-
-                response = requests.get(url, headers=headers, params=querystring)
-                odds = response.json()
-                odds_by_key[key] = odds
-        return odds_by_key
-
+    client = get_database()
+    db = client.sports
+    coll = db.league_names
+    cursor = coll.find()
+    sport_names = set()
+    for doc in cursor:
+        if (doc['group'], doc['active']) not in sport_names:
+            sport_names.add((doc['group'], doc['active']))
+    client.close()
     """
-    
-    tried this but ppl can see the backend format and also some like championship don't have id so it poses an implementation problem. we can just 
-    let the lower level decide what to do
-    with open("league_odds.txt", "w") as file:
-        for key in odds_by_key.keys():
-            odds = odds_by_key[key]
-            file.write(f"{key}\n")
+    Now we store today's odds into db
+    """
+    inserted_ids = []
+    client = get_database()
+    db = client.sports
+    coll = db.odds
+    coll.drop()
+    for sport_name in sport_names:
+        if sport_name[-1] == True:
+            url = f"https://odds.p.rapidapi.com/v4/sports/{sport_name[0]}/odds"
+
+            querystring = {"regions":"us","oddsFormat":"decimal","markets":"h2h,spreads","dateFormat":"iso"}
+
+            headers = {
+                "X-RapidAPI-Key": "cf36c28ab2msh3578c681fa5368cp168942jsnfe34a3f1abc4",
+                "X-RapidAPI-Host": "odds.p.rapidapi.com"
+            }
+
+            response = requests.get(url, headers=headers, params=querystring)
+            odds = response.json()
             
             for odd in odds:
-                file.write(f"{odd["id"]} {odd["sport_key"]} {odd["sport_title"]} {odd["commence_time"]} {odd["home_team"]} {odd["away_team"]} ")
-                bookmakers = odd["bookmakers"]
-                
-                bookmaker = bookmakers[0]
-                file.write(f"{bookmaker["key"]} {bookmaker["title"]} {bookmaker["last_update"]} ")
-                market = bookmaker["markets"][0]
-                file.write(f"{market["key"]} {market["last_update"]} {len(market["outcomes"])}\n")
-                for outcome in market["outcomes"]:
-                    file.write(f"{outcome["name"]} {outcome["price"]} \n")
-    """      
-                
-                    
+                try:
+                    result = coll.insert_many([odd])
+                    inserted_ids.append(result.inserted_ids)
+                except:
+                    print("Odds Not Valid")
             
-                
-
-    
+        
+    client.close()
+    return inserted_ids
+      
 
 
 if __name__ == "__main__":
