@@ -17,8 +17,8 @@ def main():
     cursor = coll.find()
     sport_names = set()
     for doc in cursor:
-        if (doc['group'], doc['active']) not in sport_names:
-            sport_names.add((doc['group'], doc['active']))
+        if (doc['key'], doc['active']) not in sport_names:
+            sport_names.add((doc['key'], doc['active']))
     client.close()
     """
     Now we store today's odds into db
@@ -29,25 +29,24 @@ def main():
     coll = db.odds
     coll.drop()
     for sport_name in sport_names:
-        if sport_name[-1] == True:
-            url = f"https://odds.p.rapidapi.com/v4/sports/{sport_name[0]}/odds"
+        url = f"https://odds.p.rapidapi.com/v4/sports/{sport_name[0]}/odds"
 
-            querystring = {"regions":"us","oddsFormat":"decimal","markets":"h2h,spreads","dateFormat":"iso"}
+        querystring = {"regions":"us","oddsFormat":"decimal","markets":"h2h,spreads","dateFormat":"iso"}
 
-            headers = {
-                "X-RapidAPI-Key": "cf36c28ab2msh3578c681fa5368cp168942jsnfe34a3f1abc4",
-                "X-RapidAPI-Host": "odds.p.rapidapi.com"
-            }
+        headers = {
+            "X-RapidAPI-Key": "cf36c28ab2msh3578c681fa5368cp168942jsnfe34a3f1abc4",
+            "X-RapidAPI-Host": "odds.p.rapidapi.com"
+        }
 
-            response = requests.get(url, headers=headers, params=querystring)
-            odds = response.json()
-            
-            for odd in odds:
-                try:
-                    result = coll.insert_many([odd])
-                    inserted_ids.append(result.inserted_ids)
-                except:
-                    print("Odds Not Valid")
+        response = requests.get(url, headers=headers, params=querystring)
+        odds = response.json()
+        
+        for odd in odds:
+            try:
+                result = coll.insert_many([odd])
+                inserted_ids.append(result.inserted_ids)
+            except:
+                print("Odds Not Valid")
             
         
     client.close()
