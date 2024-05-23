@@ -1,9 +1,12 @@
 import requests
-
-
+from pymongo import MongoClient
 """
 This is a one time use function the key, group, title, description, active, and has_outrights into a log
 """
+def get_database():
+    connection_string = "mongodb+srv://yeonholee50:<password>@cluster0.j2eo96c.mongodb.net/"
+    client = MongoClient(connection_string)
+    return client
 def main():
     scores_by_key = {}
     with open("league_keys.txt", "r") as league_txt_file:

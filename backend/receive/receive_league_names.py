@@ -1,11 +1,17 @@
 import requests
-
-
+from pymongo import MongoClient
 """
-This is a one time use function the key, group, title, description, active, and has_outrights into a log
+This is a one time use function the key, group, title, description, active, and puts api call into mongodb
+since 500 is limit for rapidapi per month, one time call to api per month and infinite calls via mongodb is much more scalable for other
+api calls like live odds
 """
+def get_database():
+    connection_string = "mongodb+srv://yeonholee50:YeonHo1010@cluster0.j2eo96c.mongodb.net/"
+    client = MongoClient(connection_string)
+    return client
+
 def main():
-
+    
     url = "https://odds.p.rapidapi.com/v4/sports"
 
     querystring = {"all":"true"}
@@ -17,9 +23,17 @@ def main():
 
     response = requests.get(url, headers=headers, params=querystring)
     leagues = response.json()
-    with open("league_keys.txt", "w") as file:
-        for league in leagues:
-            file.write(f"{league["key"]} {league["group"]} {league["title"]} {league["description"]} {league["active"]} {league["has_outrights"]}\n")
+    client = get_database()
+    
+    db = client.sports
+    results = []
+    for league in leagues:
+        result = db.league_names.insert_many([league])
+        results.append(result)
+    client.close()
+    return results
+    
+
 
     
 
