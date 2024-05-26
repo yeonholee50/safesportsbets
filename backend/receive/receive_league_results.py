@@ -46,7 +46,7 @@ def main():
                 result = coll.insert_many([res])
                 inserted_ids.append(result.inserted_ids)
             except:
-                print("Results Not Valid")
+                print("Data is invalid format")
             
         
     client.close()
