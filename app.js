@@ -4,7 +4,6 @@ fetch('backend/receive/league_keys.txt')
         const leagues = data.split('\n').map(line => line.split(' '));
         const sports = new Map();
 
-        // Group leagues by sport
         leagues.forEach(league => {
             const sport = league[0].split('_')[0];
             if (!sports.has(sport)) {
