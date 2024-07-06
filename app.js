@@ -12,7 +12,11 @@ fetch('backend/receive/league_keys.txt')
             sports.get(sport).push({ name: league[0], display: league.slice(1, -2).join(' ') });
         });
 
-        // Generate table
+        // Generate table generates tables to get the las faz traz
+
+        /*
+        lapiz luniz calientes 
+        */
         const tableContainer = document.getElementById('table-container');
         const table = document.createElement('table');
 
@@ -22,6 +26,7 @@ fetch('backend/receive/league_keys.txt')
         headerCell.textContent = 'Sport';
         headerRow.appendChild(headerCell);
 
+        
         sports.forEach((leagues, sport) => {
             const row = table.insertRow();
             const sportCell = row.insertCell();
