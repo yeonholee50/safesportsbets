@@ -1,0 +1,2 @@
+require('./herokuSeed');
+require('../models');

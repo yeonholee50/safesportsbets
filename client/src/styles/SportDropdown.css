@@ -1,0 +1,43 @@
+.sport-button {
+  width: 100%;
+  height: 45px;
+  /* background-color: var(--primary-light-body-color); */
+  background-color: #D0D3D4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.sport-button-active {
+  color: var(--primary-light-font-color);
+  font-weight: bold;
+  background-color: #85bb65;
+}
+
+.sport-dropdown {
+  width: 100%;
+  background-color: var(--primary-light-body-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.sport-button-icon {
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-self: left; */
+  /* align-self: center; */
+  /* text-align: left; */
+}
+
+.nav-button-right {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-self: center; */
+  /* text-align: left; */
+}

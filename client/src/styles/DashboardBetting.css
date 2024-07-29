@@ -1,0 +1,13 @@
+.dashboard-betting-body {
+  overflow-y: auto;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+
+.dashboard-betting-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height: 300px;
+}
