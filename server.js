@@ -9,8 +9,10 @@ const Games = require('./models/games');
 const Sports = require('./models/sport');
 const cron = require('node-cron');
 const moment = require('moment');
+const http = require('http');
+const socketIo = require('socket.io');
 
-// Define the port for Heroku or local use
+// Define the port for Render or local use
 const PORT = process.env.PORT || 3001;
 
 // Initialize the Express application
@@ -18,18 +20,10 @@ const app = express();
 
 // Set up Express session
 const expressSession = require('express-session')({
-  secret: 'secret',
+  secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false
 });
-
-// Serve static assets (usually for Heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  console.log('Production environment');
-} else {
-  require('dotenv').config();
-}
 
 // Middleware for parsing requests
 app.use(express.urlencoded({ extended: true }));
@@ -56,20 +50,26 @@ mongoose.connect(
     useFindAndModify: false
   }
 ).then(() => {
+  console.log('Connected to MongoDB');
+
   // Set up routes
   app.use(routes);
 
-  // Serve the React application
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
+  // Serve static assets (usually for production)
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client/build")));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "client/build/index.html"));
+    });
+  }
 
   // Initialize the server
-  const server = require('http').createServer(app);
+  const server = http.createServer(app);
 
   // Set up Socket.IO
-  const io = require('socket.io')(server, {
+  const io = socketIo(server, {
     cors: {
+      origin: "*", // Adjust this as per your requirements
       methods: ['GET', 'POST'],
       allowedHeaders: ['x-access-token', 'Origin', 'Content-Type', 'application/json'],
       credentials: true
@@ -185,4 +185,7 @@ mongoose.connect(
   server.listen(PORT, () => {
     console.log(`🌎 ==> API Socket server now on port ${PORT}!`);
   });
+}).catch(err => {
+  console.error('Error connecting to MongoDB', err);
 });
+
