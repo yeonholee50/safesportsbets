@@ -176,26 +176,4 @@ mongoose.connect(
   // Handle user connection and data fetching for betting component
   io.on('connection', async (socket) => {
     console.log('New connection:', { socket: socket.id, userId: socket.handshake.headers['x-current-user'] });
-    if (socket.handshake.headers['x-current-user']) {
-      loggedOnUsers[socket.handshake.headers['x-current-user']] = socket.id;
-    }
-
-    socket.on('package', async (data) => {
-      console.log('Package request received:', data);
-      sendData = await fetchData(socket, data.user_id);
-      socket.emit('package', sendData);
-      console.log('Package sent:', sendData);
-    });
-
-    socket.on('disconnect', () => {
-      console.log('User disconnected:', { userId: socket.handshake.headers['x-current-user'] });
-      loggedOnUsers[socket.handshake.headers['x-current-user']] = null;
-    });
-  });
-
-  server.listen(PORT, () => {
-    console.log(`🌎 ==> API Socket server now on port ${PORT}!`);
-  });
-}).catch(err => {
-  console.error('Error connecting to MongoDB', err);
-});
+   
