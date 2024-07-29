@@ -192,10 +192,10 @@ mongoose.connect(
             {
               sportTitle: leagueRelations[`${ sport[0] }`],
             }, async (err, doc) => {
-              // console.log(sport[0])
-              // console.log(Object.values(sport[1]).length < 1)
+              console.log(sport[0])
+              console.log(Object.values(sport[1]).length < 1)
               if (Object.values(sport[1]).length < 1) {
-                if (doc.leagues[`${ sport[0] }`].games.active === true) {
+                if (doc != null && doc.leagues[`${ sport[0] }`].games.active === true) {
                   await Sport.findOneAndUpdate(
                     { sportTitle: leagueRelations[`${ sport[0] }`] },
                     {
