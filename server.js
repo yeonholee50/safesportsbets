@@ -78,7 +78,6 @@ mongoose.connect(
 
   // Fetch data for Socket.IO
   const fetchData = async (socket, user_id) => {
-    console.log('Fetching data...');
     let sportsPackage = '';
     let leagues = {};
     let sendUser = {};
@@ -87,26 +86,23 @@ mongoose.connect(
 
     // Fetch active sports in season
     const fetchActiveSports = async () => {
-      console.log('Fetching active sports...');
       sportsPackage = '';
-      await Sports.find({ active: true }).then(async sports => {
-        let sportsObj = sports.map((sport) => ({
+      const promise = await Sports.find({ active: true }).then(async sports => {
+        let sportsObj = await sports.map((sport) => ({
           name: sport.sportTitle,
           leagues: sport.leagues
         }));
         sportsPackage = sportsObj;
-        console.log('Active sports fetched:', sportsPackage);
       });
     };
 
     // Fetch upcoming games based on active sports
     const fetchUpcomingGames = async () => {
-      console.log('Fetching upcoming games...');
       leagues = {};
       gamesPackage = { leagues };
       const promises = sportsPackage.map(async (sport, index) => {
         const promises2 = await Object.keys(sport.leagues).map(async league => {
-          await Games.find({
+          const promise = await Games.find({
             "league": league,
             "startDate": { $gte: moment() },
             "game.keys.gameTotalOver.currVal": { $ne: null },
@@ -120,34 +116,28 @@ mongoose.connect(
             } else {
               sportsPackage[index].leagues[`${league}`].games.active = false;
             }
-            console.log(`Upcoming games for league ${league}:`, games);
           });
         });
         await Promise.all(promises2);
       });
       await Promise.all(promises);
-      console.log('Upcoming games fetched:', gamesPackage);
     };
 
     // Fetch live and upcoming games
     const fetchLiveGames = async () => {
-      console.log('Fetching live games...');
       liveGames = {};
-      await Games.find({ $or: [{ "status": 'Live' }, { 'status': 'Upcoming' }] }).then((games) => {
-        games.forEach((game) => {
+      const promise = await Games.find({ $or: [{ "status": 'Live' }, { 'status': 'Upcoming' }] }).then((games) => {
+        const promises = games.map((game) => {
           liveGames[`${game.gameUID}`] = game;
         });
-        console.log('Live games fetched:', liveGames);
       });
     };
 
     // Fetch user information
     const fetchUser = async (user_id) => {
-      console.log(`Fetching user data for user_id ${user_id}...`);
       sendUser = {};
-      await User.findOne({ 'user_id': user_id }).then((user) => {
+      const promise = await User.findOne({ 'user_id': user_id }).then((user) => {
         sendUser = user;
-        console.log('User data fetched:', sendUser);
       });
     };
 
@@ -158,13 +148,11 @@ mongoose.connect(
 
     // Schedule task to emit site data to users every minute using sockets
     const scheduleTask = cron.schedule('* * * * *', async () => {
-      console.log('Scheduled task running...');
       await fetchActiveSports();
       await fetchUpcomingGames();
       await fetchLiveGames();
       await fetchUser(user_id);
       socket.emit('package', { navData: sportsPackage, gameData: gamesPackage, liveGames: liveGames, userData: sendUser });
-      console.log('Data emitted to user:', { navData: sportsPackage, gameData: gamesPackage, liveGames: liveGames, userData: sendUser });
     });
 
     return returnData;
@@ -175,5 +163,29 @@ mongoose.connect(
 
   // Handle user connection and data fetching for betting component
   io.on('connection', async (socket) => {
-    console.log('New connection:', { socket: socket.id, userId: socket.handshake.headers['x-current-user'] });
-   
+    if (socket.handshake.headers['x-current-user']) {
+      loggedOnUsers[socket.handshake.headers['x-current-user']] = socket.id;
+    }
+
+    console.log('Connection granted', {
+      socket: socket.id,
+      userId: socket.handshake.headers['x-current-user']
+    });
+
+    socket.on('package', async (data) => {
+      sendData = await fetchData(socket, data.user_id);
+      socket.emit('package', sendData);
+    });
+
+    socket.on('disconnect', () => {
+      loggedOnUsers[socket.handshake.headers['x-current-user']] = null;
+    });
+  });
+
+  server.listen(PORT, () => {
+    console.log(`🌎 ==> API Socket server now on port ${PORT}!`);
+  });
+}).catch(err => {
+  console.error('Error connecting to MongoDB', err);
+});
+
