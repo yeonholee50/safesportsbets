@@ -13,7 +13,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 // Define the port for Render or local use
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 // Initialize the Express application
 const app = express();
