@@ -211,7 +211,7 @@ mongoose.connect(
                 }
               } else {
                 // console.log(doc)
-                if (doc.leagues[`${ sport[0] }`].games.active === false) {
+                if (doc != null && doc.leagues[`${ sport[0] }`].games.active === false) {
                   await Sport.findOneAndUpdate(
                     { sportTitle: leagueRelations[`${ sport[0] }`] },
                     {
