@@ -68,11 +68,11 @@ async function verify (cache, opts) {
   return stats
 }
 
-async function markStartTime (cache, opts) {
+async function markStartTime () {
   return { startTime: new Date() }
 }
 
-async function markEndTime (cache, opts) {
+async function markEndTime () {
   return { endTime: new Date() }
 }
 
@@ -100,7 +100,11 @@ async function garbageCollect (cache, opts) {
       return
     }
 
-    liveContent.add(entry.integrity.toString())
+    // integrity is stringified, re-parse it so we can get each hash
+    const integrity = ssri.parse(entry.integrity)
+    for (const algo in integrity) {
+      liveContent.add(integrity[algo].toString())
+    }
   })
   await new Promise((resolve, reject) => {
     indexStream.on('end', resolve).on('error', reject)
@@ -209,7 +213,7 @@ async function rebuildIndex (cache, opts) {
   return stats
 }
 
-async function rebuildBucket (cache, bucket, stats, opts) {
+async function rebuildBucket (cache, bucket, stats) {
   await truncate(bucket._path)
   // This needs to be serialized because cacache explicitly
   // lets very racy bucket conflicts clobber each other.
@@ -220,6 +224,7 @@ async function rebuildBucket (cache, bucket, stats, opts) {
       await index.insert(cache, entry.key, entry.integrity, {
         metadata: entry.metadata,
         size: entry.size,
+        time: entry.time,
       })
       stats.totalEntries++
     } catch (err) {

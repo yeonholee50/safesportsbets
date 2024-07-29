@@ -24,7 +24,7 @@
   "homepage": "https://sbook-kman.herokuapp.com/",
   "devDependencies": {
     "concurrently": "^7.6.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.1.4"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -32,7 +32,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "apexcharts": "^3.36.3",
-    "axios": "^0.21.0",
+    "axios": "^1.7.2",
     "babel-plugin-macros": "^3.1.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
@@ -44,7 +44,7 @@
     "https": "^1.0.0",
     "if-env": "^1.0.4",
     "install": "^0.13.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
@@ -53,17 +53,18 @@
     "node": "16.13.2",
     "node-cron": "^3.0.0",
     "node-fetch": "^3.3.0",
-    "npm": "^9.2.0",
+    "npm": "^10.8.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-apexcharts": "^1.4.0",
+    "react-native-validator-form": "^1.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "socket.io": "^4.5.4",
-    "socket.io-client": "^3.1.3",
+    "socket.io-client": "^4.7.5",
     "web-vitals": "^1.1.2"
   }
 }

@@ -113,6 +113,11 @@ header.title > .description {
     line-height: 1;
 }
 
+header.title .version {
+    font-size: 0.8em;
+    color: #666666;
+}
+
 footer#edit {
     border-top: solid 1px #e1e4e8;
     margin: 3em 0 4em 0;
@@ -136,7 +141,10 @@ npm command-line interface
 
 <section id="content">
 <header class="title">
-<h1 id="npm-dist-tag">npm-dist-tag</h1>
+<h1 id="----npm-dist-tag----1082">
+    <span>npm-dist-tag</span>
+    <span class="version">@10.8.2</span>
+</h1>
 <span class="description">Modify package distribution tags</span>
 </header>
 
@@ -160,13 +168,13 @@ alias: dist-tags
 or the <a href="../using-npm/config#tag.html"><code>--tag</code> config</a> if not specified. If you have
 two-factor authentication on auth-and-writes then you’ll need to include a
 one-time password on the command line with
-<code>--otp &lt;one-time password&gt;</code>, or at the OTP prompt.</p>
+<code>--otp &lt;one-time password&gt;</code>, or go through a second factor flow based on your <code>authtype</code>.</p>
 </li>
 <li>
 <p>rm: Clear a tag that is no longer in use from the package. If you have
 two-factor authentication on auth-and-writes then you’ll need to include
 a one-time password on the command line with <code>--otp &lt;one-time password&gt;</code>,
-or at the OTP prompt.</p>
+or go through a second factor flow based on your <code>authtype</code></p>
 </li>
 <li>
 <p>ls: Show all of the dist-tags for a package, defaulting to the package in

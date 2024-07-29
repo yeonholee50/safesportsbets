@@ -13,7 +13,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 // Define the port for Render or local use
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // Initialize the Express application
 const app = express();
@@ -43,7 +43,7 @@ require('./services/resultService2');
 
 // Connect to MongoDB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/sportsbook4", {
+  process.env.MONGODB_URI || "mongodb+srv://yeonholee50:yeonholee50@cluster0.j2eo96c.mongodb.net/", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

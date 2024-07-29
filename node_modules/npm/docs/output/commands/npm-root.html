@@ -113,6 +113,11 @@ header.title > .description {
     line-height: 1;
 }
 
+header.title .version {
+    font-size: 0.8em;
+    color: #666666;
+}
+
 footer#edit {
     border-top: solid 1px #e1e4e8;
     margin: 3em 0 4em 0;
@@ -136,7 +141,10 @@ npm command-line interface
 
 <section id="content">
 <header class="title">
-<h1 id="npm-root">npm-root</h1>
+<h1 id="----npm-root----1082">
+    <span>npm-root</span>
+    <span class="version">@10.8.2</span>
+</h1>
 <span class="description">Display npm root</span>
 </header>
 
@@ -148,6 +156,7 @@ npm command-line interface
 <div id="_content"><h3 id="synopsis">Synopsis</h3>
 <pre><code class="language-bash">npm root
 </code></pre>
+<p>Note: This command is unaware of workspaces.</p>
 <h3 id="description">Description</h3>
 <p>Print the effective <code>node_modules</code> folder to standard out.</p>
 <p>Useful for using npm in shell scripts that do things with the
@@ -174,7 +183,6 @@ of the current working directory.</li>
 <h3 id="see-also">See Also</h3>
 <ul>
 <li><a href="../commands/npm-prefix.html">npm prefix</a></li>
-<li><a href="../commands/npm-bin.html">npm bin</a></li>
 <li><a href="../configuring-npm/folders.html">npm folders</a></li>
 <li><a href="../commands/npm-config.html">npm config</a></li>
 <li><a href="../configuring-npm/npmrc.html">npmrc</a></li>
