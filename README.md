@@ -30,7 +30,7 @@ Will support viewing odds pre-match 1 day prior to the match taking place.
 Will support viewing results
 Will support checking profits / loss
 
-##Version-2.0 - Pending
+## Version-2.0 - Pending
 Will support picking teams
 Will support adding balance as $10,000 per account
 Will disable reset button
