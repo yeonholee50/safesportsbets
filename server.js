@@ -43,7 +43,7 @@ require('./services/resultService2');
 
 // Connect to MongoDB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb+srv://yeonholee50:yeonholee50@cluster0.j2eo96c.mongodb.net/", {
+  process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
