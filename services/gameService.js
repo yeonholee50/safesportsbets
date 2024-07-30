@@ -54,6 +54,7 @@ mongoose.connect(
     
     const getMLB = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before MLB API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/baseball_mlb/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
       );
@@ -61,6 +62,7 @@ mongoose.connect(
     
     const getNBA = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before NBA API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/basketball_nba/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=draftkings`
       );
@@ -68,6 +70,7 @@ mongoose.connect(
     
     const getNCAABasketball = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before NCAABasketball API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/basketball_ncaab/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
       );
@@ -75,6 +78,7 @@ mongoose.connect(
     
     const getNCAAFootball = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before NCAAFootball API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/americanfootball_ncaaf/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
       );
@@ -82,6 +86,7 @@ mongoose.connect(
     
     const getNFL = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before NFL API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/americanfootball_nfl/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
       );
@@ -89,6 +94,7 @@ mongoose.connect(
     
     const getNHL = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before NHL API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/icehockey_nhl/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=draftkings`
       );
@@ -96,6 +102,7 @@ mongoose.connect(
     
     const getPGA = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before PGA API call');
       return axios.get(
         `https://betonline-legacy.datafeeds.net/api/json/odds/betonline/v2/60/golf/golf?api-key=`
       );
@@ -103,6 +110,7 @@ mongoose.connect(
     
     const getMMA = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before MMA API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/mma_mixed_martial_arts/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
       );
@@ -110,34 +118,47 @@ mongoose.connect(
     
     const getEPL = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before EPL API call');
       return axios.get(
-        `https://odds.p.rapidapi.com/v4/sports/soccer_epl/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
+        `https://odds.p.rapidapi.com/v4/sports/soccer_epl/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=betus`
+      );
+    }
+    
+    const getSerie = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before Serie API call');
+      return axios.get(
+        `https://odds.p.rapidapi.com/v4/sports/soccer_italy_serie_a/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=betus`
       );
     }
     
     const getLigue = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before Ligue API call');
       return axios.get(
-        `https://odds.p.rapidapi.com/v4/sports/soccer_france_ligue_one/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
+        `https://odds.p.rapidapi.com/v4/sports/soccer_france_ligue_one/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=betus`
       );
     }
     
     const getBundesliga = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before Bundesliga API call');
       return axios.get(
-        `https://odds.p.rapidapi.com/v4/sports/soccer_germany_bundesliga/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
+        `https://odds.p.rapidapi.com/v4/sports/soccer_germany_bundesliga/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=betus`
       );
     }
     
     const getLaLiga = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before LaLiga API call');
       return axios.get(
-        `https://odds.p.rapidapi.com/v4/sports/soccer_spain_la_liga/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=fanduel`
+        `https://odds.p.rapidapi.com/v4/sports/soccer_spain_la_liga/odds?rapidapi-key=${process.env.REACT_APP_API_KEY}&markets=h2h,spreads,totals&regions=us&oddsFormat=american&bookmakers=betus`
       );
     }
     
     const getATP = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before ATP API call');
       return axios.get(
         `https://betonline-legacy.datafeeds.net/api/json/odds/betonline/v2/60/tennis/atp?api-key=`
       );
@@ -145,10 +166,12 @@ mongoose.connect(
     
     const getWTA = async () => {
       await sleep(1000);
+      console.log('Slept for 1 second before WTA API call');
       return axios.get(
         `https://betonline-legacy.datafeeds.net/api/json/odds/betonline/v2/60/tennis/wta?api-key=`
       );
     }
+    
     
 
     await Promise.all([getNBA(), getNFL(), getNHL()])
