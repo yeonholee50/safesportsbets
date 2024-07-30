@@ -690,7 +690,7 @@ mongoose.connect(
                                       "gameTotalUnderID": `${ game.id }-6`,
                                     },
                                     "game.keys.gameTie.id": `${ game.id }-0`,
-                                    "game.keys.gameTie.currVal": game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
+                                    "game.keys.gameTie.currVal": 'None',
                                     "game.keys.gameTie.prevVal": doc[0].game.keys.gameTie.currVal,
                                     "game.keys.gameMoneylineAway.id": `${ game.id }-1`,
                                     "game.keys.gameMoneylineAway.currVal": game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[1].price < 0) ? game.bookmakers[0].markets[0].outcomes[1].price : `+${game.bookmakers[0].markets[0].outcomes[1].price}`,
@@ -746,9 +746,9 @@ mongoose.connect(
                                     "game.keys": {
                                       "gameTie": {
                                         'id': `${ game.id }-0`,
-                                        'initialVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
-                                        'prevVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
-                                        'currVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
+                                        'initialVal': 'None',
+                                        'prevVal': 'None',
+                                        'currVal': 'None',
                                         'totalDelta': '0',
                                         'currDelta': '0',
                                         'deltaOperator': 'none',
@@ -900,7 +900,7 @@ mongoose.connect(
                                       "gameTotalUnderID": `${ game.id }-6`,
                                     },
                                     "game.keys.gameTie.id": `${ game.id }-0`,
-                                    "game.keys.gameTie.currVal": game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
+                                    "game.keys.gameTie.currVal": 'None',
                                     "game.keys.gameTie.prevVal": doc[0].game.keys.gameTie.currVal,
                                     "game.keys.gameMoneylineAway.id": `${ game.id }-1`,
                                     "game.keys.gameMoneylineAway.currVal": game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[0].price < 0) ? game.bookmakers[0].markets[0].outcomes[0].price : `+${game.bookmakers[0].markets[0].outcomes[0].price}`,
@@ -954,9 +954,9 @@ mongoose.connect(
                                     "game.keys": {
                                       "gameTie": {
                                         'id': `${ game.id }-0`,
-                                        'initialVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
-                                        'prevVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
-                                        'currVal': game.bookmakers[0].markets[0] === undefined ? null : (game.bookmakers[0].markets[0].outcomes[2].price < 0) ? game.bookmakers[0].markets[0].outcomes[2].price : `+${game.bookmakers[0].markets[0].outcomes[2].price}`,
+                                        'initialVal': 'None',
+                                        'prevVal': 'None',
+                                        'currVal': 'None',
                                         'totalDelta': '0',
                                         'currDelta': '0',
                                         'deltaOperator': 'none',
