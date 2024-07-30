@@ -55,10 +55,7 @@ const userSchema = new Schema({
     type: Array,
     ref: 'BetSlip'
   },
-  // account_value: {
-  //   type: Number,
-  //   default: 1000
-  // },
+  
   account_value: {
     current: {
       type: Number,
@@ -68,12 +65,9 @@ const userSchema = new Schema({
       type: Number,
       default: 0
     },
-    // type: Object,
+    
   },
-  // account_value_history: {
-  //   type: Array,
-  //   default: [{date: Date.now(), value: 1000}]
-  // },
+  
   account_value_history: {
     // type: Object,
     balance: {
@@ -101,9 +95,7 @@ userSchema.post('findOneAndUpdate', (user) => {
   // console.log(user)
   user.account_value.current += parseFloat(user.betting_outcome_history[user.betting_outcome_history.length-1].outcome);
   user.account_value.pending -= Math.abs(parseFloat(user.betting_outcome_history[user.betting_outcome_history.length-1].outcome));
-  // console.log(user.account_value.pending)
-  // user.account_value_history.push({date: Date.now(), value: user.account_value.current})
-  // user.account_pending_history.push({date: Date.now(), value: user.account_value.pending})
+  
   user.account_value_history.balance.push({date: Date.now(), value: user.account_value.current})
   user.account_value_history.pending.push({date: Date.now(), value: user.account_value.pending})
 
