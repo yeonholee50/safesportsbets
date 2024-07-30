@@ -33,7 +33,6 @@ Will support viewing results
 Will support checking profits / loss
 
 ## Version-1.1.1 - Pending
-Will fix api-limits on rapid
 Will support picking teams
 Will support adding balance as $10,000 per account
 Will disable reset button
