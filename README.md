@@ -25,14 +25,17 @@ We welcome contributions from the community to help improve this project. To con
 For questions, feedback, or support, please contact me by raising an issue
 
 ## Version-1.0.1 ✔️
+
 Will support sign-up / login system
 Will support viewing odds pre-match 1 day prior to the match taking place.
 
 ## Version-1.0.2 ✔️
+
 Will support viewing results
 Will support checking profits / loss
 
 ## Version-1.1.1 - Pending
+
 Will support picking teams
 Will support adding balance as $10,000 per account
 Will disable reset button
