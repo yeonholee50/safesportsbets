@@ -24,8 +24,18 @@ We welcome contributions from the community to help improve this project. To con
 ## Contact
 For questions, feedback, or support, please contact me by raising an issue
 
-## Version-1.0 - Currently in progress in getting built
-Will support creation of private account with fixed fund.
-Will support viewing odds pre-match 1 day prior to the match taking place.
-Will support picking which team to win.
-Will support funds changed based on outcome after the match is concluded.
+## Version-1.0.1 ✔️
+- Will support sign-up / login system
+- Will support viewing odds pre-match 1 day prior to the match taking place.
+
+## Version-1.0.2 ✔️
+- Will support viewing results
+- Will support checking profits / loss
+
+## Version-1.1.1 - Pending
+- Will find workaround for fixed api calls on RapidAPI for sports odds
+- Will support picking teams
+- Will support adding balance as $10,000 per account
+- Will disable reset button
+- Will fix graph to display non-glitched profits/loss
+
