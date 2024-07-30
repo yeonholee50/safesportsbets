@@ -15,7 +15,7 @@ mongoose.connect(
   }
 ).then(async () => {
   // runs ever 12.02 hours
-  setInterval(() => updateResults(), 43300000)
+  setInterval(() => updateResults(), 604800000)
 
     // function to continually update database with results information
     // const scheduleTask = cron.schedule('45 * * * *', async () => {
@@ -28,72 +28,97 @@ mongoose.connect(
     let resultsArr = [];
     let resultsObj = {};
     console.log('update results')
-
-    const getMLBResults = () => {
+    const sleep = (ms) => {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    const getMLBResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before MLB results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/baseball_mlb/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getNBAResults = () => {
+    
+    const getNBAResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before NBA results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/basketball_nba/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getNFLResults = () => {
+    
+    const getNFLResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before NFL results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/americanfootball_nfl/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getNCAAFootballResults = () => {
+    
+    const getNCAAFootballResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before NCAAFootball results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/americanfootball_ncaaf/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getNCAABasketballResults = () => {
+    
+    const getNCAABasketballResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before NCAABasketball results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/basketball_ncaab/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getNHLResults = () => {
+    
+    const getNHLResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before NHL results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/icehockey_nhl/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
       );
     }
-
-    const getMMAResults = () => {
+    
+    const getMMAResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before MMA results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/mma_mixed_martial_arts/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getEPLResults = () => {
+    
+    const getEPLResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before EPL results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/soccer_epl/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getLigueResults = () => {
+    
+    const getLigueResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before Ligue results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/soccer_france_ligue_one/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
       );
     }
-
-    const getBundesligaResults = () => {
+    
+    const getBundesligaResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before Bundesliga results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/soccer_germany_bundesliga/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
-      )
+      );
     }
-
-    const getLaLigaResults = () => {
+    
+    const getLaLigaResults = async () => {
+      await sleep(1000);
+      console.log('Slept for 1 second before LaLiga results API call');
       return axios.get(
         `https://odds.p.rapidapi.com/v4/sports/soccer_spain_la_liga/scores?daysFrom=1&rapidapi-key=${process.env.REACT_APP_API_KEY}`
       );
     }
+    
 
     const updateGamesDB = async () => {
       const promises = Object.entries(resultsObj).map(async (sport, index) => {
