@@ -29,14 +29,12 @@ For questions, feedback, or support, please contact me by raising an issue
 - Will support viewing odds pre-match 1 day prior to the match taking place.
 
 ## Version-1.0.2 ✔️
-
-Will support viewing results
-Will support checking profits / loss
+- Will support viewing results
+- Will support checking profits / loss
 
 ## Version-1.1.1 - Pending
-
-Will support picking teams
-Will support adding balance as $10,000 per account
-Will disable reset button
-Will fix graph to display non-glitched profits/loss
+- Will support picking teams
+- Will support adding balance as $10,000 per account
+- Will disable reset button
+- Will fix graph to display non-glitched profits/loss
 
