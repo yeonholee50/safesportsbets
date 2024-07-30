@@ -3,7 +3,7 @@ const db = require('../models/sport');
 require('dotenv').config();
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/sportsbook4",
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
