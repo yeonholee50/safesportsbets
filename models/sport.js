@@ -17,10 +17,6 @@ const sportSchema = new Schema(
   }
 );
 
-// sportSchema.pre('updateOne', (sport) => {
-
-// })
-
 const Sport = mongoose.model("Sport", sportSchema);
 
 module.exports = Sport;
