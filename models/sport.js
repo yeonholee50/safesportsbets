@@ -6,7 +6,6 @@ const sportSchema = new Schema(
   {
     sportTitle: { type: String },
     leagues: {
-      // type: String
     },
     active: { type: Boolean, default: false },
     prevStatus: { type: Boolean, default: false },

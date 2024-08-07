@@ -7,7 +7,6 @@ import '../styles/BetSlipDashboard.css';
 
 const BetSlipDashboard = (props) => {
   console.log(props)
-  // const [dropdown, showDropdown] = useState(false);
   const [state, setState] = useState(props);
   const iconClasses = {
     'Baseball': 'fa-baseball-ball',

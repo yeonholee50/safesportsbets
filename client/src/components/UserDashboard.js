@@ -12,12 +12,9 @@ import '../styles/UserDashboard.css';
 
 const UserDashboard = (props) => {
   console.log(props)
-  const [bets, setBets] = useState([]);//
-  // const [user, setUser] = useState('');
+  const [bets, setBets] = useState([]);
   const [dashboard, setDashboard] = useState({active: 'graph', options: ['graph', 'betting']});
-  // console.log(user1)
   const [user, setUser] = useState(props.user);
-  // const [user, setUser] = useState({name: '', account_value: '', account_value_history: [], bets: user1.bets});
   const [account_valu, setAccountValue] = useState('');
   const [dropdown, showDropdown] = useState(false);
   const [account, setAccount] = useState({
@@ -42,22 +39,17 @@ const UserDashboard = (props) => {
       ],
       options: {
         xaxis: {
-          // categories: ["2022-12-16", "2022-12-17", "2022-12-18", "2022-12-19", "2022-12-20", "2022-12-21"]
-          categories: ["2022/12/16", "2022/12/21", "2022/12/17"]
+          categories: ["2023/12/17", "2023/12/21", "2023/12/17"]
         }
       }
   }
-  // console.log(user)
 
   useEffect(() => {
-    // function to get user data for indiviaulized dashboard
-    // const userData = JSON.parse(localStorage.getItem('user'));
-    // const userId = userData.user_id;
+    
     if (user.user.account_value_history.length > 0) {
       const groups = user.user.account_value_history.reduce((acc, item) => {
         const yearWeek = `${moment(item.date).year()}-${moment(item.date).month()+1}-${moment(item.date).day()+1}`;
 
-        // add this key as a property to the result object
         if (!acc[yearWeek]) {
           acc[yearWeek] = 0;
         }

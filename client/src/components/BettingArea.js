@@ -12,8 +12,7 @@ const BettingArea = (props) => {
   const [removalData, setRemovalData] = useState({target: '', type: '', operation: '', emptyAll: false, retroactive: {targets: [], type: '', slipID: ''}})
   const [league, setLeague] = useState('NHL');
   const [state, setState] = useState({sport: 'Football', league: 'NFL', type: 'games', games: [], navData: [], siteData: [], isLoading: true})
-  // const [ex, setEx] = useState('')
-  // const [user, setUser] = useState({user: props.user, bets: props.bets});
+  
   const [user, setUser] = useState(
     {
       user: props.user,
@@ -21,8 +20,7 @@ const BettingArea = (props) => {
     }
   );
   const { socket } = useContext(GlobalContext);
-  // console.log(props.bets)
-  // console.log(socket)
+
   console.log(user.bets)
   socket.on('package', (data) => {
     console.log(data)

@@ -32,7 +32,7 @@ const BetSlip = (props) => {
             {slip.slips.keys[`${ slip.betUID[0] }`].betType === 'Moneyline' ?
               <div className='slip-bet-info'><i className={slip.slips.keys[`${ slip.betUID[0] }`].icon}></i>
                 &nbsp;{slip.slips.keys[`${ slip.betUID[0] }`].team}&nbsp;<b>ML ({slip.slips.keys[`${ slip.betUID[0] }`].odds.num})</b>
-                {/* &nbsp;{slip.slips.keys[`${ slip.betUID[0] }`].team}&nbsp;<b>ML ({slip.slips.keys[`${ slip.betUID[0] }`].odds.num[0] === '-' ? slip.slips.keys[`${ slip.betUID[0] }`].odds.num : `+${slip.slips.keys[`${ slip.betUID[0] }`].odds.num}`})</b> */}
+                {}
               </div> :
             ''
             }
@@ -75,12 +75,12 @@ const BetSlip = (props) => {
               <label>WAGER</label>
             </div>
             <div>
-              {/* <div className='slip-odds'>{(slip.payout.odds.american).charAt(0) === '-' ? slip.payout.odds.american : `+${slip.payout.odds.american}`}</div> */}
+              {}
               <div className='slip-odds'>{slip.payout.odds.american}</div>
               <label>ODDS</label>
             </div>
             <div className='slip-win-money'>
-              {/* <div className='slip-to-win'>{`$${slip.payout.toWin}`}</div> */}
+              {}
               <div className='slip-to-win'>{!isNaN(slip.payout.toWin) ? `$${slip.payout.toWin}` : `$0`}</div>
               <label>PAYOUT</label>
             </div>

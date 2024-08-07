@@ -3,12 +3,6 @@ import Chart from 'react-apexcharts';
 import '../styles/DashboardChart.css';
 
 const DashboardChart = (props) => {
-  // const [dropdown, showDropdown] = useState(false);
-  // const [state, setState] = useState({});
-
-  // const handleChartChange = () => {
-
-  // }
   console.log(props)
 
   useEffect(() => {

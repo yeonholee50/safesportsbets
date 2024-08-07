@@ -14,7 +14,7 @@ const BetSlipActive = (props) => {
         <div className='slip-body'>
           <div className='slip-body-top'>
             <div className='slip-type'>Straight</div>
-            {/* <div className='slip-exit'><FontAwesomeIcon className='success' icon={faCircleCheck} /></div> */}
+            {}
           </div>
           <div className='slip-body-main'>
             {slip.slips.keys[`${ slip.betUID[0] }`].betType === 'Moneyline' ?

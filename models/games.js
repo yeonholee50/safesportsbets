@@ -13,16 +13,13 @@ const gamesSchema = new Schema(
     startDate: { type: Date },
     game: {
       odds: {
-        // type: Object
       },
       props: {
         player: {
 
         },
         players: {
-          // type: Object
         },
-        // type: Object
       },
       keys: {
         gameTie: {

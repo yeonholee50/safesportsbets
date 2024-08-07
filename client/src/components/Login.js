@@ -12,11 +12,10 @@ const Login = () => {
     password: ''
   })
 
-  const handleSubmit = async (event) => { // handles submit button on login
+  const handleSubmit = async (event) => { 
     event.preventDefault();
     await API.login(user).then((response) => { // calls to API once user clicks submit
       if (response.data.success) {
-        // console.log(response.data)
         setLoggedInUser(response.data.user)
         setBets(response.data.dbBetSlip)
         setIsLoggedIn(true);

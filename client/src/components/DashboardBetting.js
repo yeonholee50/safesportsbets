@@ -7,8 +7,7 @@ import { faFootballBall, faHockeyPuck, faBasketballBall, faFutbol, faSquareCheck
 import '../styles/DashboardBetting.css';
 
 const DashboardBetting = (props) => {
-  // const [dropdown, showDropdown] = useState(false);
-  // const [state, setState] = useState(props.bets.active);
+  
   const [state, setState] = useState({bets: props.bets, games: props.games, type: 'active'});
   // console.log(props.games)
   const iconClasses = {

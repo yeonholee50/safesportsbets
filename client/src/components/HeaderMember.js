@@ -9,7 +9,7 @@ import '../styles/HeaderMember.css';
 const HeaderMember = () => {
   return (
     <div className='header-container'>
-      <div className='header-left header-title'>SportsBook</div>
+      <div className='header-left header-title'>safesportsbets</div>
       <div className='header-right header-links'>
         <Button className='user-button'>
           <FontAwesomeIcon icon={faUser} />

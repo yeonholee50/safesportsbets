@@ -18,9 +18,7 @@ const DashboardChartsContainer = (props) => {
     console.log(item)
     const ex = `${moment(item.date).format('L')}`
     console.log(ex)
-    // const yearWeek = `${moment(item.date).year()}-${moment(item.date).month()+1}-${moment(item.date).day()+1}`;
-    // console.log(yearWeek)
-    // add this key as a property to the result object
+    
     if (!acc[ex]) {
       acc[ex] = 0;
     }
@@ -33,9 +31,7 @@ const DashboardChartsContainer = (props) => {
     console.log(item)
     const ex = `${moment(item.date).format('L')}`
     console.log(ex)
-    // const yearWeek = `${moment(item.date).year()}-${moment(item.date).month()+1}-${moment(item.date).day()+1}`;
-    // console.log(yearWeek)
-    // add this key as a property to the result object
+    
     if (!acc[ex]) {
       acc[ex] = 0;
     }

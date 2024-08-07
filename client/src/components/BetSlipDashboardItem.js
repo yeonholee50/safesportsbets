@@ -10,9 +10,7 @@ const BetSlipDashboardItem = (props) => {
   // const [dropdown, showDropdown] = useState(false);
   const [state, setState] = useState({bet: props.bet, game: props.game, dropdown: false});
   console.log(props)
-  // if (state.game.results.full.scores !== undefined) {
-  //   // console.log(state.game.results.full.scores)
-  // }
+  
   const iconClasses = {
     'Baseball': 'fa-baseball-ball',
     'fas fa-football-ball': faFootballBall,

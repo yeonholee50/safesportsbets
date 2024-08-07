@@ -19,9 +19,7 @@ const Main = (props) => {
   return (
     <GlobalContextProvider>
       <div className='members-page'>
-        {/* <div className='members-section-top'>
-          <UserDashboard user={props.location.state.user} bets={props.location.state.bets} />
-        </div> */}
+        {}
         <div className='members-section-mid'>
           <BettingArea user={props.location.state.user} bets={props.location.state.bets} />
         </div>

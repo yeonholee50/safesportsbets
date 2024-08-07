@@ -92,7 +92,6 @@ const userSchema = new Schema({
 userSchema.plugin(passportLocalMongoose);
 
 userSchema.post('findOneAndUpdate', (user) => {
-  // console.log(user)
   user.account_value.current += parseFloat(user.betting_outcome_history[user.betting_outcome_history.length-1].outcome);
   user.account_value.pending -= Math.abs(parseFloat(user.betting_outcome_history[user.betting_outcome_history.length-1].outcome));
   

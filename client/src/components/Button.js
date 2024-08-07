@@ -1,6 +1,5 @@
 import React from 'react';
 
-// module for dynamic button creation
 const Button = (props) => {
   return (
     <button
@@ -14,7 +13,7 @@ const Button = (props) => {
       line = {props['line']}
       odds = {props['odds']}
       slipid = {props['slipid']}
-      // key={props['key']}
+      
     >
       {props.children}
     </button>

@@ -6,22 +6,16 @@ import '../styles/DropdownButton.css';
 
 const DropdownButton = (props) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  // const [currentLine, setCurrentLine] = useState({line: props.activeLine.line, odds: props.activeLine.odds})
   const altLines = props.altLines;
   let currentLine = props.activeLine
   console.log(altLines)
 
   const handleClick = (e, slip, id) => {
     props.passLine(e, slip, id)
-    // setCurrentLine({line: e.target.attributes['line'].value, odds: e.target.attributes['odds'].value})
     setShowDropdown(false)
   }
 
-  // const handleTsrClick = (e, slip, id) => {
-  //   props.passTeaserLine(e, slip, id)
-  //   // setCurrentLine({line: e.target.attributes['line'].value, odds: e.target.attributes['odds'].value})
-  //   setShowDropdown(false);
-  // }
+  
 
   const handleTargetClick = () => {
     showDropdown ? setShowDropdown(false) : setShowDropdown(true);
