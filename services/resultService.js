@@ -17,12 +17,6 @@ mongoose.connect(
   // runs ever 12.02 hours
   setInterval(() => updateResults(), 604800000)
 
-    // function to continually update database with results information
-    // const scheduleTask = cron.schedule('45 * * * *', async () => {
-    //   console.log(new Date())
-    //   console.log('results')
-    //   await updateResults();
-    // })
 
   const updateResults = async () => {
     let resultsArr = [];
@@ -295,7 +289,6 @@ mongoose.connect(
                   {
                     $set: {
                       "outcome": false,
-                      // [`slips.keys.${ betUID }.payout`]: `-${doc.slips.keys[`${betUID}`].toLose}`,
                       [`slips.keys.${ betUID }.outcome`]: {"value": "" , "logic": false},
                       [`slips.keys.${ betUID }.status`]: "Completed",
                     },
@@ -466,7 +459,7 @@ mongoose.connect(
     await Promise.all([getNBAResults(), getNFLResults(), getNHLResults()])
       .then((data) => {
         resultsObj = {
-            // MLB: data[0].data.games,
+            
             NBA: data[0].data,
             NFL: data[1].data,
             NHL: data[2].data
@@ -482,5 +475,4 @@ mongoose.connect(
       await Promise.all([updateSlipsDB(resultsArr)]);
     }
   }
-  // updateResults();
 })

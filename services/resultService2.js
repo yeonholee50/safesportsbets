@@ -18,12 +18,6 @@ mongoose.connect(
   // runs ever 12.02 hours
   setInterval(() => updateResults(), 604800000)
 
-    // function to continually update database with results information
-    // const scheduleTask = cron.schedule('45 * * * *', async () => {
-    //   console.log(new Date())
-    //   console.log('results')
-    //   await updateResults();
-    // })
 
   const updateResults = async () => {
     let resultsArr = [];

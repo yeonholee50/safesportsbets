@@ -9,16 +9,13 @@ const mongoose = require('mongoose');
 
 
 router.post('/api/bet', async (req, res) => {
-  // console.log(req.body.betInfo)
   console.log(req.body.sum)
   console.log('after after')
   if (req.body.betInfo.length > 1) {
     let slips = {}
     BetSlip.insertMany(req.body.betInfo).then((slip) => {
-      // console.log(slip)
       slips = slip;
       User.findOne({'user_id': slip[0].userID}).then((initial_user) => {
-        // console.log(initial_user)
         User.updateOne(
           {'user_id': initial_user.user_id},
           {
@@ -42,10 +39,8 @@ router.post('/api/bet', async (req, res) => {
   } else {
     let slips = {}
     BetSlip.create(req.body.betInfo).then((slip) => {
-      // console.log(slip)
       slips = slip;
       User.findOne({'user_id': slip[0].userID}).then((initial_user) => {
-        // console.log(initial_user)
         User.updateOne(
           {'user_id': initial_user.user_id},
           {
@@ -73,7 +68,6 @@ router.post('/api/bet', async (req, res) => {
 
 
 router.post('/api/bet/bulk', (req, res) => {
-  // console.log(req.body)
   BetSlip.insertMany(req.body)
     .then(async dbSlip => {
       res.json(dbSlip);
@@ -81,9 +75,7 @@ router.post('/api/bet/bulk', (req, res) => {
         {
           'user_id': dbBetSlip.userID
         }, async (err, doc) => {
-          // console.log('1')
           await User.findOneAndUpdate(
-          // let user1 = await User.findOneAndUpdate(
             {'user_id': dbBetSlip.userID},
             {
               $set: {
@@ -92,24 +84,17 @@ router.post('/api/bet/bulk', (req, res) => {
               }
             },
             { new: true }, async (err, doc) => {
-              // user1 = doc;
               console.log('2')
               console.log(doc)
               if (!err) {
                 await res.json({slip: dbBetSlip, user: doc});
               }
-              // user = doc;
-              // console.log(user)
+              
             }
           )
-          // user = user1;
-          // console.log('1')
-          // await new Promise(user1)
-          // return user;
-          // console.log(user)
-          // doc.save()
+          
         }
-        // }
+        
       )
 
     })
@@ -132,12 +117,10 @@ router.get('/api/user', (req, res) => {
 })
 
 router.get('/api/bet', (req, res) => {
-  // console.log('req.body')
-  // console.log(req.query.userId)
+  
   BetSlip.find({
     'userID': req.query.userId
   }).then(dbBetSlip => {
-      // console.log(dbBetSlip);
       res.json(dbBetSlip);
     }).catch(err => {
       res.status(400).json(err);
@@ -145,7 +128,6 @@ router.get('/api/bet', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  // console.log(req.body)
   const Users = new User({
     username: req.body.email,
     first_name: req.body.first_name,
@@ -161,39 +143,31 @@ router.post('/signup', (req, res) => {
     if (err) {
       res.json({success: false, message:"creation unsuccessful", err});
     } else {
-      // passport.authenticate('local')(req, res, function() {
-      //   console.log('authenticated');
-      // })
-      // console.log(user)
+      
       res.json({success: true, message:'creation successful', user});
     }
   });
 });
 
 router.post('/login', (req, res) => {
-  // console.log("inside /login");
   passport.authenticate('local', async (err, user, info) => {
-  //  console.log(req.body)
     if (err) {
       res.json({success: false, message: err})
     } else if (!user) {
       res.json({success: false, message: 'username or pass incorrect'})
     } else {
       const token = jwt.sign({username: user.username}, 'shhhh', {expiresIn: '1h'});
-      // localStorage.setItem('user', JSON.stringify(user)); // define what is passed back
       await BetSlip.find({
         'userID': user.user_id
       }).then(dbBetSlip => {
-          // console.log(dbBetSlip);
           user['slips'] = dbBetSlip;
           
           res.json({success: true, message: "authentication successful", token, user, dbBetSlip});
-          // res.json(dbBetSlip);
+          
         })
         .catch(err => {
           res.status(400).json(err);
         });
-      // res.json({success: true, message: "authentication successful", token, user});
     }
   }) (req, res);
 });

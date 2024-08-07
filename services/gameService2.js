@@ -199,14 +199,7 @@ mongoose.connect(
     console.log('hello after timeout')
     await Promise.all([getEPL(), getLigue(), getBundesliga(), getLaLiga()]).then(data => {
         const gamesObj = {
-          // MLB: data[0].data,
-          // 'NBA': data[5].data,
-          // NCAABasketball: data[3].data,
-          // NCAAFootball: data[4].data,
-          // 'NFL': data[6].data,
-          // 'NHL': data[7].data,
-          // // PGA: data[5].data,
-          // // MMA: data[7].data,
+          
           'EPL': data[0].data,
           'Ligue 1 - France': data[1].data,
           'Bundesliga - Germany': data[2].data,
@@ -216,12 +209,10 @@ mongoose.connect(
           'NFL': gamesObj2.NFL,
           'NHL': gamesObj2.NHL,
           'NCAAB': gamesObj3.NCAAB
-          // ATP: data[5].data,
-          // WTA: data[6].data
+          
         }
 
         const entries = Object.entries(gamesObj).map(async (sport, index) => {
-          // console.log(sport[0])
           const findSport = await Sport.findOne(
             {
               sportTitle: leagueRelations[`${ sport[0] }`],
@@ -265,8 +256,7 @@ mongoose.connect(
 
                 if (leagueRelations[`${ sport[0] }`] !== 'Soccer') {
                   const promise = await Object.values(sport[1]).map(async (game, index) => {
-                    // console.log(game.bookmakers[0].markets[2])
-                    // console.log(game)
+                    
                     if (game.bookmakers.length !== 0) {
                       if (game.away_team !== game.bookmakers[0].markets[0].outcomes[0].name) {
                         const updateGame = await Game.find(
@@ -274,7 +264,6 @@ mongoose.connect(
                             gameUID: game.id
                           }, async (err, doc) => {
                             if (game.bookmakers.length === 0) {
-                              // console.log('fail safe')
                             } else if (doc.length > 0) {
                               await Game.findOneAndUpdate(
                                 { gameUID: game.id },
@@ -467,7 +456,6 @@ mongoose.connect(
                             gameUID: game.id
                           }, async (err, doc) => {
                             if (game.bookmakers.length === 0) {
-                              // console.log('fail safe')
                             } else if (doc.length > 0) {
                               await Game.findOneAndUpdate(
                                 { gameUID: game.id },
@@ -659,8 +647,6 @@ mongoose.connect(
                   })
                 } else {
                   const promise = await Object.values(sport[1]).map(async (game, index) => {
-                    // console.log(game.bookmakers[0].markets[2])
-                    // console.log(game)
                     if (game.bookmakers.length !== 0) {
                       if (game.away_team !== game.bookmakers[0].markets[0].outcomes[0].name) {
                         const updateGame = await Game.find(
@@ -668,7 +654,6 @@ mongoose.connect(
                             gameUID: game.id
                           }, async (err, doc) => {
                             if (game.bookmakers.length === 0) {
-                              // console.log('fail safe')
                             } else if (doc.length > 0) {
                               await Game.findOneAndUpdate(
                                 { gameUID: game.id },
@@ -1089,16 +1074,8 @@ mongoose.connect(
             }
           )
         })
-        // console.log(gamesObj)
       })
-        // function to continually update database with games information
-    // const scheduleTask = cron.schedule('30 * * * *', async () => {
-    //   console.log(new Date());
-    //   await getGames();
-    //   console.log('games');
-    // })
 
   }
-  // commenting this out so i don't go over my api calls
   getGames()
 })
