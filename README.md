@@ -32,7 +32,7 @@ For questions, feedback, or support, please contact me by raising an issue
 - Will support viewing results
 - Will support checking profits / loss
 
-## Version-1.1.1 - Pending
+## Version-1.1.1 ✔️
 - Will find workaround for fixed api calls on RapidAPI for sports odds
 - Will support picking teams
 - Will support adding balance as $10,000 per account
